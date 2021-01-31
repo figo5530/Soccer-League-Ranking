@@ -1,4 +1,4 @@
-require 'open-url'
+require 'open-uri'
 require 'nokogiri'
 # "https://www.espn.com/soccer/standings/_/league/eng.1"
 class Scrapper

@@ -1,3 +1,4 @@
+require_relative '../config/environment.rb'
 class CLI
     def initialize
     end

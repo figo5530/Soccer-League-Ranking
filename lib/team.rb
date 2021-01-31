@@ -28,8 +28,4 @@ class Team
         @@all
     end
 
-    def self.show_table
-        puts " Team  GP W D L F A GD P"
-        all.each {|team| puts "#{team.name} #{team.game_played} #{team.wins} #{team.draws} #{team.losses} #{team.goals_for} #{team.goals_against} #{team.goal_difference} #{team.points}" }
-    end
 end

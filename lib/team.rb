@@ -9,6 +9,13 @@ class Team
     end
 
     def self.create_from_collection(team_array)
-        team_array.each {|e| Team.new(e)}
+        team_array.each {|e| Team.new(e) }
+        # mass produce team obj from outside the class
+    end
+
+    def add_attributes(attribute_hash)
+        attribute_hash.each {|attr, value| self.send("#{attr}=", value }
+        # for every instance to set its rest properties such as game_played, wins
+        self # return itself for next method's purpose
     end
 end

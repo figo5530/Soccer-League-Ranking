@@ -7,4 +7,8 @@ class Team
         team_hash.each {|k,v| self.send(("#{k}="), v) }
         @@all << self
     end
+
+    def self.create_from_collection(team_array)
+        team_array.each {|e| Team.new(e)}
+    end
 end

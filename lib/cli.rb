@@ -13,14 +13,18 @@ class CLI
         puts "Please enter ita for Serie A, esp for La Liga, eng for Premier League."
         input = gets.strip
         if input == "ita" || input == "esp" || input == "eng"
-            team_array = Scrapper.scrpae_team_from_league("eng")
-            stat_array = Scrapper.scrpae_stat_from_league("eng")
-            Team.create_from_collection(team_array)
-            Team.complete_team_stat(stat_array)
+            create_league(input)
         else
             puts "Sorry, your input was invalid or beyond our database."
             self.prompt_for_league
         end
+    end
+
+    def create_league(input)
+        team_array = Scrapper.scrpae_team_from_league(input)
+        stat_array = Scrapper.scrpae_stat_from_league(input)
+        Team.create_from_collection(team_array)
+        Team.complete_team_stat(stat_array)
     end
 
     def show_table
@@ -29,15 +33,11 @@ class CLI
     end
 
     def test
-        # team_array = Scrapper.scrpae_team_from_league("ita")
-        # stat_array = Scrapper.scrpae_stat_from_league("ita")
-        team_array = Scrapper.scrpae_team_from_league("eng")
-        stat_array = Scrapper.scrpae_stat_from_league("eng")
-        Team.create_from_collection(team_array)
-        Team.complete_team_stat(stat_array)
+        welcome
+        show_table
     end
 end
 
 cli = CLI.new
 cli.test
-cli.show_table
+

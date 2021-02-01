@@ -1,5 +1,4 @@
 require_relative '../config/environment.rb'
-require 'pry'
 class CLI
 
     def welcome
@@ -52,13 +51,13 @@ class CLI
     def exit_program
         abort("Thank you for using Soccer League Ranking. See you next time!")
     end
-    
+
     def create_teams(input)
         team_array = Scrapper.scrape_team_from_league(input)
         stat_array = Scrapper.scrape_stat_from_league(input, team_array)
         Team.create_from_collection(stat_array)
         # Team.complete_team_stat(stat_array)
-        Team.all
+        Team.all.select {|t| t.league == input}
     end
 
     def create_league(input, teams)

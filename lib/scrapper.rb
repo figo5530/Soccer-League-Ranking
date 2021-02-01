@@ -13,7 +13,7 @@ class Scrapper
         doc.css(".hide-mobile a").each do |e|
             # create local var "team_name" to store every element's name
             team_name = e.text
-            teams << {name: team_name}
+            teams << {name: team_name, league: league_name}
         end
         # return that array with hashes for it can be used as an argument
         teams

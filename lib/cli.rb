@@ -117,6 +117,16 @@ class CLI
         Team.all.select {|t| t.league == team.league }.index {|x| x.name == input } + 1
     end
 
+    def team_by_goal_for(league)
+        puts "Rank  Name  Goals"
+        league.team_array.sort_by {|t| -t.goals_for }.each_with_index {|t,x| puts "#{x + 1}. #{t.name} #{t.goals_for}" }
+    end
+
+    def team_by_goal_against(league)
+        puts "Rank  Name  Lost Goals"
+        league.team_array.sort_by {|t| -t.goals_against }.each_with_index {|t,x| puts "#{x + 1}. #{t.name} #{t.goals_against}" }
+    end
+
     def test
         welcome
     end

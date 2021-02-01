@@ -1,4 +1,3 @@
-require_relative '../config/environment.rb'
 class CLI
 
     def welcome
@@ -127,11 +126,5 @@ class CLI
         league.team_array.sort_by {|t| -t.goals_against }.each_with_index {|t,x| puts "#{x + 1}. #{t.name} #{t.goals_against}" }
     end
 
-    def test
-        welcome
-    end
 end
-
-cli = CLI.new
-cli.test
 

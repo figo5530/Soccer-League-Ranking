@@ -29,6 +29,9 @@ class CLI
         puts "3. Teams going to next season's Europa League"
         puts "4. Teams might be relegated at the end of this season"
         # to be continued
+        puts "5. Ranking by goals"
+        puts "6. Ranking by lost goals"
+        puts "Enter team name to check detail information about certain team"
         puts "Enter up or back to select other leagues."
         user_selection(league)
     end
@@ -40,11 +43,30 @@ class CLI
         elsif input == "exit" || input == "bye"
             exit_program
         elsif input == "2" || input.include?("Champion") || input.include?("champion")
-            league.team_array.each_with_index {|t, idx| puts "#{t.name}" if idx < 4}
+            puts "------------------------------------"
+            puts "These are the teams going to next year Champions league! Hooray!"
+            league.team_array.each_with_index {|t, idx| puts "#{idx + 1}. #{t.name}" if idx < 4}
+            puts "------------------------------------"
         elsif input == "3" || input.include?("euro") || input.include?("Euro")
-            league.team_array.each_with_index {|t, idx| puts "#{t.name}" if idx == 4}
+            puts "------------------------------------"
+            puts "This is the team going to next year Europa league! Hooray!"
+            league.team_array.each_with_index {|t, idx| puts "#{idx + 1}. #{t.name}" if idx == 4}
+            puts "------------------------------------"
         elsif input == "4" || input.include?("relegate") || input.include?("Relega")
-            league.team_array.each_with_index {|t, idx| puts "#{t.name}" if idx > league.team_array.count - 4 }
+            puts "------------------------------------"
+            puts "These are teams might be relegated to a inferior league. Come back next year!"
+            league.team_array.each_with_index {|t, idx| puts "#{idx + 1}. #{t.name}" if idx > league.team_array.count - 4 }
+            puts "------------------------------------"
+        elsif input == "5"
+            puts "------------------------------------"
+            puts "This is the table ordered by goals. Exhilarating GOAL GOAL GOAL!"
+            team_by_goal_for(league)
+            puts "------------------------------------"
+        elsif input == "6"
+            puts "------------------------------------"
+            puts "This is the table ordered by lost goals. Reinforce your DEFENSE!"
+            team_by_goal_against(league)
+            puts "------------------------------------"
         elsif Team.find_by_name(input)
             show_team(input)
         elsif input == "up" || input == "back"
@@ -83,7 +105,7 @@ class CLI
         puts "------------------------------------"
         team = Team.find_by_name(input)
         puts "#{team.name}"
-        puts "Plays in #{team.league}. Current ranking: #{current_ranking_in_league(input)}"
+        puts "Plays in #{team.league} league. Current ranking: #{current_ranking_in_league(input)}"
         puts "Played #{team.game_played} games. #{team.wins} Wins #{team.draws} Draws #{team.losses} Losses."
         puts "Scored #{team.goals_for} goals got #{team.goals_against} lost goals."
         puts "Has #{team.points} league points and #{team.goal_difference} goal difference."

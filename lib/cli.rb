@@ -1,7 +1,5 @@
 require_relative '../config/environment.rb'
 class CLI
-    def initialize
-    end
 
     def welcome
         puts "Welcome to the Soccer League Ranking app!"
@@ -39,8 +37,8 @@ class CLI
     end
 
     def create_league(input)
-        team_array = Scrapper.scrpae_team_from_league(input)
-        stat_array = Scrapper.scrpae_stat_from_league(input)
+        team_array = Scrapper.scrape_team_from_league(input)
+        stat_array = Scrapper.scrape_stat_from_league(input)
         Team.create_from_collection(team_array)
         Team.complete_team_stat(stat_array)
     end

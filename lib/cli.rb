@@ -39,6 +39,12 @@ class CLI
             show_table(league)
         elsif input == "exit" || input == "bye"
             exit_program
+        elsif input == "2" || input.include?("Champion") || input.include?("champion")
+            league.team_array.each_with_index {|t, idx| puts "#{t.name}" if idx < 4}
+        elsif input == "3" || input.include?("euro") || input.include?("Euro")
+            league.team_array.each_with_index {|t, idx| puts "#{t.name}" if idx == 5}
+        elsif input == "4" || input.include?("relegate") || input.include?("Relega")
+            league.team_array.each_with_index {|t, idx| puts "#{t.name}" if idx > league.team_array.count - 4 }
         elsif input == "up" || input == "back"
             prompt_for_league
         else

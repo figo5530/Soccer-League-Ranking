@@ -18,6 +18,16 @@ class CLI
             puts "Sorry, your input was invalid or beyond our database."
             self.prompt_for_league
         end
+        league_options
+    end
+
+    def league_options
+        puts "Please choose from the following list for information."
+        puts "1. Ranking"
+        puts "2. Teams going to next season's UEFA Champions League"
+        puts "3. Teams going to next season's Europa League"
+        puts "4. Teams might be relegated at the end of this season"
+        # to be continued
     end
 
     def create_league(input)

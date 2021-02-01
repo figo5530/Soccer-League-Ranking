@@ -30,4 +30,7 @@ class Team
         @@all
     end
 
+    def self.find_by_name(name)
+        self.all.find {|t| t.name == name}
+    end
 end

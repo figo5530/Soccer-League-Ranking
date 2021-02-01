@@ -42,9 +42,11 @@ class CLI
         elsif input == "2" || input.include?("Champion") || input.include?("champion")
             league.team_array.each_with_index {|t, idx| puts "#{t.name}" if idx < 4}
         elsif input == "3" || input.include?("euro") || input.include?("Euro")
-            league.team_array.each_with_index {|t, idx| puts "#{t.name}" if idx == 5}
+            league.team_array.each_with_index {|t, idx| puts "#{t.name}" if idx == 4}
         elsif input == "4" || input.include?("relegate") || input.include?("Relega")
             league.team_array.each_with_index {|t, idx| puts "#{t.name}" if idx > league.team_array.count - 4 }
+        elsif Team.find_by_name(input)
+            show_team(input)
         elsif input == "up" || input == "back"
             prompt_for_league
         else
@@ -74,6 +76,15 @@ class CLI
         puts "Rank  Team  GP  W  D  L  F  A  GD  P"
         league.team_array.each.with_index(1) {|team, idx| puts " #{idx}  #{team.name} #{team.game_played} #{team.wins} #{team.draws} #{team.losses} #{team.goals_for} #{team.goals_against} #{team.goal_difference} #{team.points}" }
         puts "------------------------------------"
+    end
+
+    def show_team(input)
+        team = Team.find_by_name(input)
+        puts "#{team.name}"
+        puts "Plays in #{team.league}. Current ranking: #{Team.all.index(input)}"
+        puts "Played #{team.game_played} games. #{team.wins} Wins #{team.draws} Draws #{team.losses} Losses."
+        puts "Scored #{team.goals_for} goals got #{team.goals_against} lost goals."
+        puts "Has #{team.points} league points and #{team.goal_difference} goal difference."
     end
 
     def test

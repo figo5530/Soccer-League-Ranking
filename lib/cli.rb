@@ -27,6 +27,7 @@ class CLI
         puts "3. Teams going to next season's Europa League"
         puts "4. Teams might be relegated at the end of this season"
         # to be continued
+        puts "Enter up or back to select other leagues."
         user_selection
     end
 
@@ -37,6 +38,8 @@ class CLI
         elsif input == "exit" || input == "bye"
             puts "See you next time!"
             return
+        elsif input == "up" || input == "back"
+            prompt_for_league
         else
             puts "--The selection was invalid.--"
         end

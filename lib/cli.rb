@@ -13,7 +13,7 @@ class CLI
         if input == "ita" || input == "esp" || input == "eng"
             create_league(input)
         else
-            puts "Sorry, your input was invalid or beyond our database."
+            puts "--Sorry, your input was invalid or beyond our database.--"
             self.prompt_for_league
         end
         league_options
@@ -33,7 +33,14 @@ class CLI
         input = gets.strip
         if input == "1" || input.include?("ranking") || input.include?("Ranking")
             show_table
+        elsif input == "exit" || input == "bye"
+            puts "See you next time!"
+            return
+        else
+            puts "--The selection was invalid.--"
         end
+        puts "What more would you like to know? Enter exit or bye to leave this program."
+        league_options
     end
 
     def create_league(input)

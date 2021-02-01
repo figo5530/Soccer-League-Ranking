@@ -11,7 +11,8 @@ class CLI
         puts "Please enter ita for Serie A, esp for La Liga, eng for Premier League."
         input = gets.strip
         if input == "ita" || input == "esp" || input == "eng"
-            create_league(input)
+            teams = create_teams(input)
+            create_league(input, teams)
         else
             puts "--Sorry, your input was invalid or beyond our database.--"
             self.prompt_for_league
@@ -43,16 +44,22 @@ class CLI
         league_options
     end
 
-    def create_league(input)
+    def create_teams(input)
         team_array = Scrapper.scrape_team_from_league(input)
         stat_array = Scrapper.scrape_stat_from_league(input)
         Team.create_from_collection(team_array)
         Team.complete_team_stat(stat_array)
+        Team.all
+    end
+
+    def create_league(input, teams)
+        League.new(input, teams)
     end
 
     def show_table
         puts "Rank  Team  GP  W  D  L  F  A  GD  P"
         Team.all.each.with_index(1) {|team, idx| puts " #{idx}  #{team.name} #{team.game_played} #{team.wins} #{team.draws} #{team.losses} #{team.goals_for} #{team.goals_against} #{team.goal_difference} #{team.points}" }
+        puts "------------------------------------"
     end
 
     def test

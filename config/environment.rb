@@ -1,4 +1,5 @@
 require_relative '../lib/scrapper.rb'
 require_relative '../lib/team.rb'
+require_relative '../lib/league.rb'
 require 'open-uri'
 require 'nokogiri'

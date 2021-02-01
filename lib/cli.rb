@@ -28,6 +28,14 @@ class CLI
         puts "3. Teams going to next season's Europa League"
         puts "4. Teams might be relegated at the end of this season"
         # to be continued
+        user_selection
+    end
+
+    def user_selection
+        input = gets.strip
+        if input == "1" || input.include?("ranking") || input.include?("Ranking")
+            show_table
+        end
     end
 
     def create_league(input)
@@ -38,13 +46,12 @@ class CLI
     end
 
     def show_table
-        puts " Team  GP  W  D  L  F  A  GD  P"
-        Team.all.each {|team| puts "#{team.name} #{team.game_played} #{team.wins} #{team.draws} #{team.losses} #{team.goals_for} #{team.goals_against} #{team.goal_difference} #{team.points}" }
+        puts "Rank  Team  GP  W  D  L  F  A  GD  P"
+        Team.all.each.with_index(1) {|team, idx| puts " #{idx}  #{team.name} #{team.game_played} #{team.wins} #{team.draws} #{team.losses} #{team.goals_for} #{team.goals_against} #{team.goal_difference} #{team.points}" }
     end
 
     def test
         welcome
-        show_table
     end
 end
 

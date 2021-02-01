@@ -73,18 +73,26 @@ class CLI
     end
 
     def show_table(league)
+        puts "------------------------------------"
         puts "Rank  Team  GP  W  D  L  F  A  GD  P"
         league.team_array.each.with_index(1) {|team, idx| puts " #{idx}  #{team.name} #{team.game_played} #{team.wins} #{team.draws} #{team.losses} #{team.goals_for} #{team.goals_against} #{team.goal_difference} #{team.points}" }
         puts "------------------------------------"
     end
-
+    
     def show_team(input)
+        puts "------------------------------------"
         team = Team.find_by_name(input)
         puts "#{team.name}"
-        puts "Plays in #{team.league}. Current ranking: #{Team.all.index(input)}"
+        puts "Plays in #{team.league}. Current ranking: #{current_ranking_in_league(input)}"
         puts "Played #{team.game_played} games. #{team.wins} Wins #{team.draws} Draws #{team.losses} Losses."
         puts "Scored #{team.goals_for} goals got #{team.goals_against} lost goals."
         puts "Has #{team.points} league points and #{team.goal_difference} goal difference."
+        puts "------------------------------------"
+    end
+
+    def current_ranking_in_league(input)
+        team = Team.find_by_name(input)
+        Team.all.select {|t| t.league == team.league }.index {|x| x.name == input } + 1
     end
 
     def test

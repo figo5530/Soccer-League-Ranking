@@ -45,6 +45,28 @@ Returns an array
 
 ### The `Team` Class
 
+Pretty standard.
+
+#### The `#initialize` Method
+```
+team_hash.each {|k,v| self.send(("#{k}="), v) }
+@@all << self
+```
+Requests an argument `team_hash` which is a hash
+Creates an object and sets its properties according to key/value pair of pased in argument
+
+#### The `.create_from_collection` Method
+Requests an Array as argument
+Creates objects from every hashes in this array
+
+#### The `.all` Method
+Returns `@@all`
+
+#### The `.find_by_name` Method
+Requests a String argument
+Returns a team object if it exists
+
+
 ### The `League` Class
 
 ### The `CLI` Class

@@ -61,15 +61,9 @@ class CLI
             league.team_array.each_with_index {|t, idx| puts "#{idx + 1}. #{t.name}" if idx > league.team_array.count - league.relegation }
             puts "------------------------------------"
         elsif input == "5"
-            puts "------------------------------------"
-            puts "This is the table ordered by goals. Exhilarating GOAL GOAL GOAL!"
             team_by_goal_for(league)
-            puts "------------------------------------"
         elsif input == "6"
-            puts "------------------------------------"
-            puts "This is the table ordered by lost goals. Reinforce your DEFENSE!"
             team_by_goal_against(league)
-            puts "------------------------------------"
         elsif input == "7"
             show_score_rank(league)
         elsif input == "8"
@@ -141,13 +135,19 @@ class CLI
     end
 
     def team_by_goal_for(league)
+        puts "------------------------------------"
+        puts "This is the table ordered by goals. Exhilarating GOAL GOAL GOAL!"
         puts "Rank  Name  Goals"
         league.team_array.sort_by {|t| -t.goals_for }.each_with_index {|t,x| puts "#{x + 1}. #{t.name} #{t.goals_for}" }
+        puts "------------------------------------"
     end
 
     def team_by_goal_against(league)
+        puts "------------------------------------"
+        puts "This is the table ordered by lost goals. Reinforce your DEFENSE!"
         puts "Rank  Name  Lost Goals"
         league.team_array.sort_by {|t| -t.goals_against }.each_with_index {|t,x| puts "#{x + 1}. #{t.name} #{t.goals_against}" }
+        puts "------------------------------------"
     end
 
 end

@@ -88,6 +88,42 @@ Returns `@@all`
 Requests a String argument
 Returns a league object if it exists
 
-
-
 ### The `CLI` Class
+
+#### Flow Control Category
+
+#### The `#welcome` Method
+
+Lead the way!
+
+#### The `#prompt_for_league` Method
+
+This method should prompt user to input a string.
+The string user typed in would lead this method to different directions.
+If user inputs meaningless strings, it would recurse back to itself.
+If user inputs `ita` `esp` `eng` `fra` `ger` for the first time, it would invoke `#create_teams`, `#create_league`, `.scrape_score_rank_from_league`, `scrape_assist_rank_from_league` to create teams, league and set `league.score_rank` and `league.assist_rank` the whole package of a league.
+If user inputs  `ita` `esp` `eng` `fra` `ger` for the second time, it would assign corresponding league object to this `league` variable.
+Last two path would lead to the next method `league_options` with `league` variable.
+
+#### The `#league_options` Method
+#### The `#user_selection` Method
+#### The `#exit_program` Method
+
+***
+
+#### Object Generation Category
+
+#### The `#create_teams` Method
+#### The `#create_league` Method
+
+***
+
+#### Demonstration Category
+
+#### The `#show_table` Method
+#### The `#show_score_rank` Method
+#### The `#show_assist_rank` Method
+#### The `#show_team` Method
+#### The `#team_by_goal_for` Method
+#### The `#team_by_goal_against` Method
+#### The `#current_ranking_in_league` Method

@@ -1,5 +1,4 @@
 class CLI
-
     def welcome
         puts "Welcome to the Soccer League Ranking app!"
         self.prompt_for_league
@@ -7,11 +6,11 @@ class CLI
 
     def prompt_for_league
         puts "Which league would you like to check?"
-        puts "Please enter ita for Serie A, esp for La Liga, eng for Premier League."
+        puts "Please enter ita for Serie A, esp for La Liga, eng for Premier League, fra for Ligue 1, ger for Bundesliga."
         input = gets.strip
         if League.find_by_name(input)
             league = League.find_by_name(input)
-        elsif input == "ita" || input == "esp" || input == "eng"
+        elsif input == "ita" || input == "esp" || input == "eng" || input == "fra" || input == "ger"
             teams = create_teams(input)
             league = create_league(input, teams)
         else
@@ -30,8 +29,9 @@ class CLI
         # to be continued
         puts "5. Ranking by goals"
         puts "6. Ranking by lost goals"
-        puts "Enter team name to check detail information about certain team"
+        puts "Enter team name to check detail information about a certain team"
         puts "Enter up or back to select other leagues."
+        puts "Enter exit or bye to quit."
         user_selection(league)
     end
 

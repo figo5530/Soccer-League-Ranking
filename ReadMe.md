@@ -99,15 +99,37 @@ Lead the way!
 #### The `#prompt_for_league` Method
 
 This method should prompt user to input a string.
+
 The string user typed in would lead this method to different directions.
+
 If user inputs meaningless strings, it would recurse back to itself.
+
 If user inputs `ita` `esp` `eng` `fra` `ger` for the first time, it would invoke `#create_teams`, `#create_league`, `.scrape_score_rank_from_league`, `scrape_assist_rank_from_league` to create teams, league and set `league.score_rank` and `league.assist_rank` the whole package of a league.
+
 If user inputs  `ita` `esp` `eng` `fra` `ger` for the second time, it would assign corresponding league object to this `league` variable.
+
 Last two path would lead to the next method `league_options` with `league` variable.
 
 #### The `#league_options` Method
+
+This method should take in a league object argument and show a "Menu" to user and move on to the next step `#user_selection` with the same argument.
+
 #### The `#user_selection` Method
+
+This method should take in a league object argument and ask user for input string.
+
+After getting a meaningful string it would invoke corresponding method then invoke `#league_options`
+inputting meaningless or invalid string would redirect this program to `#league_options` too,
+
+Let's see some special directions.
+
+input `up` or `back` to invoke `#prompt_for_league` which means you can go back to the top level to choose which league you would like to check.
+
+input `exit` or `bye` to invoke `#exit_program` which puts this program to an end.
+
 #### The `#exit_program` Method
+
+This method should print some good-bye words and exit the program.
 
 ***
 

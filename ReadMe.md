@@ -49,11 +49,11 @@ Pretty standard.
 
 #### The `#initialize` Method
 ```
-team_hash.each {|k,v| self.send(("#{k}="), v) }
-@@all << self
+    team_hash.each {|k,v| self.send(("#{k}="), v) }
+    @@all << self
 ```
 Requests an argument `team_hash` which is a hash
-Creates an object and sets its properties according to key/value pair of pased in argument
+Creates an Team object and sets its properties according to key/value pair of pased in argument
 
 #### The `.create_from_collection` Method
 Requests an Array as argument
@@ -68,5 +68,26 @@ Returns a team object if it exists
 
 
 ### The `League` Class
+
+#### The `#initialize` Method
+```
+    @name = name
+    @team_array = team_array
+    name == "fra" ? @champion_league_quota = 2 : @champion_league_quota = 4
+    name == "fra" ? @euro_league = 3 : @euro_league = 4
+    name == "fra" || name == "ger" ? @relegation = 3 : @relegation = 4
+    @@all << self
+```
+Requests an argument `team_array` which is an array of Team objects and a argument `name` to set different rules for different league.
+Creates an League object and sets its properties according to `name`
+
+#### The `.all` Method
+Returns `@@all`
+
+#### The `.find_by_name` Method
+Requests a String argument
+Returns a league object if it exists
+
+
 
 ### The `CLI` Class

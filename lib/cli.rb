@@ -71,17 +71,9 @@ class CLI
             team_by_goal_against(league)
             puts "------------------------------------"
         elsif input == "7"
-            puts "------------------------------------"
-            puts "Top 10 scoring machine!!"
-            puts "       Player    Team   GP  Score"
-            league.show_score_rank
-            puts "------------------------------------"
+            show_score_rank(league)
         elsif input == "8"
-            puts "------------------------------------"
-            puts "Top 10 assist master!!"
-            puts "       Player    Team   GP  Assist"
-            league.show_assist_rank
-            puts "------------------------------------"
+            show_assist_rank(league)
         elsif Team.find_by_name(input)
             show_team(input)
         elsif input == "up" || input == "back"
@@ -116,6 +108,22 @@ class CLI
         puts "------------------------------------"
     end
     
+    def show_score_rank(league)
+        puts "------------------------------------"
+        puts "Top 10 scoring machine!!"
+        puts "       Player    Team   GP  Score"
+        league.score_rank.each_with_index {|player, idx| puts "#{idx+1}. #{player[:name]}  #{player[:team]}  #{player[:game_played]}  #{player[:score]}"}
+        puts "------------------------------------"
+    end
+
+    def show_assist_rank(league)
+        puts "------------------------------------"
+        puts "Top 10 assist master!!"
+        puts "       Player    Team   GP  Assist"
+        league.assist_rank.each_with_index {|player, idx| puts "#{idx+1}. #{player[:name]}  #{player[:team]}  #{player[:game_played]}  #{player[:assist]}"}
+        puts "------------------------------------"
+    end
+
     def show_team(input)
         puts "------------------------------------"
         team = Team.find_by_name(input)

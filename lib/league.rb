@@ -15,13 +15,13 @@ class League
         @@all
     end
 
-    def show_score_rank
-        @score_rank.each_with_index {|player, idx| puts "#{idx+1}. #{player[:name]}  #{player[:team]}  #{player[:game_played]}  #{player[:score]}"}
-    end
+    # def show_score_rank
+    #     @score_rank.each_with_index {|player, idx| puts "#{idx+1}. #{player[:name]}  #{player[:team]}  #{player[:game_played]}  #{player[:score]}"}
+    # end
 
-    def show_assist_rank
-        @assist_rank.each_with_index {|player, idx| puts "#{idx+1}. #{player[:name]}  #{player[:team]}  #{player[:game_played]}  #{player[:assist]}"}
-    end
+    # def show_assist_rank
+    #     @assist_rank.each_with_index {|player, idx| puts "#{idx+1}. #{player[:name]}  #{player[:team]}  #{player[:game_played]}  #{player[:assist]}"}
+    # end
 
     def self.find_by_name(name)
         self.all.find {|l| l.name == name}

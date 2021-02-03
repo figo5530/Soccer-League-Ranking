@@ -49,7 +49,7 @@ class CLI
         elsif input == "3" || input.include?("euro") || input.include?("Euro")
             puts "------------------------------------"
             puts "This is the team going to next year Europa league! Hooray!"
-            league.team_array.each_with_index {|t, idx| puts "#{idx + 1}. #{t.name}" if idx == 4}
+            league.team_array.each_with_index {|t, idx| puts "#{idx + 1}. #{t.name}" if idx == league.euro_league}
             puts "------------------------------------"
         elsif input == "4" || input.include?("relegate") || input.include?("Relega")
             puts "------------------------------------"

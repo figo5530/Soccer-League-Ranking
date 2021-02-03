@@ -44,7 +44,7 @@ class CLI
         elsif input == "2" || input.include?("Champion") || input.include?("champion")
             puts "------------------------------------"
             puts "These are the teams going to next year Champions league! Hooray!"
-            league.team_array.each_with_index {|t, idx| puts "#{idx + 1}. #{t.name}" if idx < 4}
+            league.team_array.each_with_index {|t, idx| puts "#{idx + 1}. #{t.name}" if idx < league.champion_league_quota}
             puts "------------------------------------"
         elsif input == "3" || input.include?("euro") || input.include?("Euro")
             puts "------------------------------------"
@@ -54,7 +54,7 @@ class CLI
         elsif input == "4" || input.include?("relegate") || input.include?("Relega")
             puts "------------------------------------"
             puts "These are teams might be relegated to a inferior league. Come back next year!"
-            league.team_array.each_with_index {|t, idx| puts "#{idx + 1}. #{t.name}" if idx > league.team_array.count - 4 }
+            league.team_array.each_with_index {|t, idx| puts "#{idx + 1}. #{t.name}" if idx > league.team_array.count - league.relegation }
             puts "------------------------------------"
         elsif input == "5"
             puts "------------------------------------"

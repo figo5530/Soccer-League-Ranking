@@ -1,10 +1,12 @@
 class League
-    attr_accessor :name, :team_array
+    attr_accessor :name, :team_array, :champion_league_quota, :relegation
     @@all = []
 
     def initialize(name, team_array)
         @name = name
         @team_array = team_array
+        name == "fra" ? @champion_league_quota = 2 : @champion_league_quota = 4
+        name == "fra" || name == "ger" ? @relegation = 3 : @relegation = 4
         @@all << self
     end
 

@@ -72,12 +72,14 @@ class CLI
             puts "------------------------------------"
         elsif input == "7"
             puts "------------------------------------"
-            puts "This is the table ordered by lost goals. Reinforce your DEFENSE!"
+            puts "Top 10 scoring machine!!"
+            puts "       Player    Team   GP  Score"
             league.show_score_rank
             puts "------------------------------------"
         elsif input == "8"
             puts "------------------------------------"
-            puts "This is the table ordered by lost goals. Reinforce your DEFENSE!"
+            puts "Top 10 assist master!!"
+            puts "       Player    Team   GP  Assist"
             league.show_assist_rank
             puts "------------------------------------"
         elsif Team.find_by_name(input)

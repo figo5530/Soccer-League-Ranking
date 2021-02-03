@@ -49,4 +49,54 @@ class Scrapper
         teams
     end
 
+    def self.scrape_score_rank_from_league(league_name)
+        site = "https://www.espn.com/soccer/stats/_/league/#{league_name}.1"
+        doc = Nokogiri::HTML(open(site))
+        score_rank = doc.css(".Table__TBODY").css("tr").css("span").each_slice(200).to_a[0]
+        # player_arr = Array.new(score_rank.count/4) {Hash.new}
+        player_arr = Array.new(10) {Hash.new}
+        score_rank.each_with_index do |stat, i|
+            if i < 40
+                x = i / 4
+                if i % 4 == 0
+                    player_arr[x][:name] = stat.text
+                elsif i % 4 == 1
+                    player_arr[x][:team] = stat.text
+                elsif i % 4 == 2
+                player_arr[x][:game_played] = stat.text
+                else i % 4 == 3
+                player_arr[x][:score] = stat.text
+                end
+            else
+                return player_arr
+            end
+        end
+        player_arr
+    end
+    
+    def self.scrape_assist_rank_from_league(league_name)
+        site = "https://www.espn.com/soccer/stats/_/league/#{league_name}.1"
+        doc = Nokogiri::HTML(open(site))
+        score_rank = doc.css(".Table__TBODY").css("tr").css("span").each_slice(200).to_a[1]
+        # player_arr = Array.new(score_rank.count/4) {Hash.new}
+        player_arr = Array.new(10) {Hash.new}
+        score_rank.each_with_index do |stat, i|
+            if i < 40
+                x = i / 4
+                if i % 4 == 0
+                    player_arr[x][:name] = stat.text
+                elsif i % 4 == 1
+                    player_arr[x][:team] = stat.text
+                elsif i % 4 == 2
+                    player_arr[x][:game_played] = stat.text
+                else i % 4 == 3
+                    player_arr[x][:assist] = stat.text
+                end
+            else
+                return player_arr
+            end
+        end
+        player_arr
+    end
+
 end

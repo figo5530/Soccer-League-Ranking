@@ -13,6 +13,8 @@ class CLI
         elsif input == "ita" || input == "esp" || input == "eng" || input == "fra" || input == "ger"
             teams = create_teams(input)
             league = create_league(input, teams)
+            league.score_rank = Scrapper.scrape_score_rank_from_league(input)
+            league.assist_rank = Scrapper.scrape_assist_rank_from_league(input)
         else
             puts "--Sorry, your input was invalid or beyond our database.--"
             self.prompt_for_league
@@ -29,6 +31,8 @@ class CLI
         # to be continued
         puts "5. Ranking by goals"
         puts "6. Ranking by lost goals"
+        puts "7. Score ranking top 10"
+        puts "8. Assist ranking top 10"
         puts "Enter team name to check detail information about a certain team"
         puts "Enter up or back to select other leagues."
         puts "Enter exit or bye to quit."
@@ -65,6 +69,16 @@ class CLI
             puts "------------------------------------"
             puts "This is the table ordered by lost goals. Reinforce your DEFENSE!"
             team_by_goal_against(league)
+            puts "------------------------------------"
+        elsif input == "7"
+            puts "------------------------------------"
+            puts "This is the table ordered by lost goals. Reinforce your DEFENSE!"
+            league.show_score_rank
+            puts "------------------------------------"
+        elsif input == "8"
+            puts "------------------------------------"
+            puts "This is the table ordered by lost goals. Reinforce your DEFENSE!"
+            league.show_assist_rank
             puts "------------------------------------"
         elsif Team.find_by_name(input)
             show_team(input)

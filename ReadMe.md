@@ -136,16 +136,26 @@ This method should print some good-bye words and exit the program.
 #### Object Generation Category
 
 #### The `#create_teams` Method
+
+This method should take in a String argument and invoke `Scrapper` class method `.scrape_team_from_league` and `.scrape_stat_from_league` to get the data from URL.
+Then creates `Team` instances according to previous data.
+
+At last returns an array of `Team` instances which name equals to the string argument.
+
 #### The `#create_league` Method
+
+Takes in a String argument and the return value of `#create_teams` to create a `League` instance.
 
 ***
 
 #### Demonstration Category
 
-#### The `#show_table` Method
-#### The `#show_score_rank` Method
-#### The `#show_assist_rank` Method
-#### The `#show_team` Method
-#### The `#team_by_goal_for` Method
-#### The `#team_by_goal_against` Method
-#### The `#current_ranking_in_league` Method
+These methods below are all for demostrating purposes with simple logic.
+
+* #### The `#show_table` Method
+* #### The `#show_score_rank` Method
+* #### The `#show_assist_rank` Method
+* #### The `#show_team` Method
+* #### The `#team_by_goal_for` Method
+* #### The `#team_by_goal_against` Method
+* #### The `#current_ranking_in_league` Method

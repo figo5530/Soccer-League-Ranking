@@ -159,3 +159,11 @@ These methods below are all for demostrating purposes with simple logic.
 * #### The `#team_by_goal_for` Method
 * #### The `#team_by_goal_against` Method
 * #### The `#current_ranking_in_league` Method
+
+## License
+
+This project is licensed under the CC0 1.0 Universal Creative Commons License - see the LICENSE.md file for details
+
+## Contributing
+
+Please read CONTRIBUTING for details on our code of conduct, and the process for submitting pull requests to us.
